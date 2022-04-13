@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "msg": "获取菜单成功",
+    "status": "OK"
+  },
+  "data": {
+    "menus": {
+      "menuItems": [
+        {
+          "id": "1-1",
+          "name": "首页",
+          "url": "/home",
+          "children": null
+        },
+        {
+          "id": "1-2",
+          "name": "商品管理",
+          "url": "/goods",
+          "children": [
+            {
+              "id": "1-2-1",
+              "name": "商品列表",
+              "url": "/goods/list",
+              "children": null
+            },
+            {
+              "id": "1-2-2",
+              "name": "添加商品",
+              "url": "/goods/add",
+              "children": null
+            }
+          ]
+        },
+        {
+          "id": "1-3",
+          "name": "订单管理",
+          "url": "/order",
+          "children": [
+            {
+              "id": "1-3-1",
+              "name": "订单列表",
+              "url": "/order/list",
+              "children": null
+            },
+            {
+              "id": "1-3-2",
+              "name": "添加订单",
+              "url": "/order/add",
+              "children": null
+            }
+          ]
+        },
+        {
+          "id": "1-4",
+          "name": "用户管理",
+          "url": "/user",
+          "children": [
+            {
+              "id": "1-4-1",
+              "name": "用户列表",
+              "url": "/user/list",
+              "children": null
+            },
+            {
+              "id": "1-4-2",
+              "name": "添加用户",
+              "url": "/user/add",
+              "children": null
+            }
+          ]
+        },
+        {
+          "id": "1-5",
+          "name": "角色管理",
+          "url": "/role",
+          "children": [
+            {
+              "id": "1-5-1",
+              "name": "角色列表",
+              "url": "/role/list",
+              "children": null
+            },
+            {
+              "id": "1-5-2",
+              "name": "添加角色",
+              "url": "/role/add",
+              "children": null
+            }
+          ]
+        },
+        {
+          "id": "1-6",
+          "name": "权限管理",
+          "url": "/permission",
+          "children": [
+            {
+              "id": "1-6-1",
+              "name": "权限列表",
+              "url": "/permission/list",
+              "children": null
+            },
+            {
+              "id": "1-6-2",
+              "name": "添加权限",
+              "url": "/permission/add",
+              "children": null
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

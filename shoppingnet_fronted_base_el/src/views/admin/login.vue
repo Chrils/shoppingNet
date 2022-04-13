@@ -3,7 +3,7 @@
     <div class="login_box">
       <!-- 头像区域 -->
       <div class="avatar_box">
-        <img src="@/assets/logo.png" alt="logo" >
+        <img src="@/assets/img/header_m.png" alt="header" >
       </div>
       <!-- 登录表单区域 -->
       <el-form ref="LoginFormRef" :model="LoginForm" :rules="LoginFormRules" label-width="0px" class="login_form">
@@ -66,13 +66,13 @@
           //await用于等待异步操作完成，必须使用async声明
           const {data : res} = await this.$http.post('/client/user/login',this.LoginForm)
           console.log(res)
-          if (res.state === "success"){
+          if (res.meta.status === "OK"){
             //保存token到sessionStorage
-            sessionStorage.setItem('token',res.token);
-            this.$message.success('登录成功');
+            sessionStorage.setItem('token',res.data.token);
+            this.$message.success(res.meta.msg);
             await this.$router.push('/home');
           }else{
-            this.$message.error('登录失败');
+            this.$message.error(res.meta.msg);
           }
 
           // if (res.meta.status !== 200) {

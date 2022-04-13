@@ -5,12 +5,20 @@ Vue.use(Router)
 
 const routes = [
   {path: '/',redirect:'/login'},
-  {path: '/login',component:()=>import('../components/content/login.vue')},
-  {path: '/home',component:()=>import('../components/content/home.vue')},
+  {path: '/login',component:()=>import('../views/admin/login.vue')},
+  {
+      path: '/home',
+      component:()=>import('../views/admin/home.vue'),
+      redirect: '/welcome',
+      children:[
+          {path: '/welcome',component:()=>import('../views/admin/welcome.vue')},
+          {path: '/user/list',component:()=>import('../views/admin/user/userList.vue')},
+      ]},
 ]
 
 const router = new Router({
-    routes: routes
+    routes: routes,
+    mode: 'history'
 })
 
 /**
