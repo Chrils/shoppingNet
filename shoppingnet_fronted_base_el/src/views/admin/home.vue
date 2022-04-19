@@ -9,7 +9,7 @@
       </div>
       <el-button type="info" @click="logout">退出</el-button>
     </el-header>
-    <el-container>
+    <el-container class="home-bottom-container">
       <!-- 左侧菜单区域 -->
       <el-aside :width="isCollapsed ? '64px' : '200px'">
         <!-- 折叠展开按钮 -->
@@ -87,9 +87,15 @@ export default {
 .home-container{
   height: 100%;
 }
+
+.home-bottom-container{
+  width: 100%;
+  height: 90vh;
+}
 .el-header{
   background-color: #373d41;
   display: flex;
+  height: 10vh;
   justify-content: space-between;
   align-items: center;
   color: #fff;

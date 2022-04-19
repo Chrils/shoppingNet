@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef75369e-ec49-4f73-a5a4-45a6f2e20e06" name="Changes" comment="添加登录导航守卫 保存token信息" />
+    <list default="true" id="ef75369e-ec49-4f73-a5a4-45a6f2e20e06" name="Changes" comment="添加登录导航守卫 保存token信息">
+      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/power/rights.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/power/roles.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/user/userList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/user/userList.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +95,15 @@
       <workItem from="1649741735120" duration="44000" />
       <workItem from="1649742480600" duration="7967000" />
       <workItem from="1649830961923" duration="34000" />
-      <workItem from="1649831009422" duration="5492000" />
+      <workItem from="1649831009422" duration="6154000" />
+      <workItem from="1649837214104" duration="12901000" />
+      <workItem from="1649897477009" duration="7367000" />
+      <workItem from="1649983670019" duration="7626000" />
+      <workItem from="1650014490046" duration="12424000" />
+      <workItem from="1650175427900" duration="1872000" />
+      <workItem from="1650274084684" duration="4279000" />
+      <workItem from="1650328795517" duration="1686000" />
+      <workItem from="1650331631988" duration="2315000" />
     </task>
     <task id="LOCAL-00001" summary="add new files">
       <created>1649235387077</created>
@@ -129,7 +144,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

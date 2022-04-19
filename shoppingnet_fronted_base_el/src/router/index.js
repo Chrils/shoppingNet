@@ -13,6 +13,8 @@ const routes = [
       children:[
           {path: '/welcome',component:()=>import('../views/admin/welcome.vue')},
           {path: '/user/list',component:()=>import('../views/admin/user/userList.vue')},
+          {path: '/rights/list',component:()=>import('../views/admin/power/rights.vue')},
+          {path: '/roles/list',component:()=>import('../views/admin/power/roles.vue')},
       ]},
 ]
 

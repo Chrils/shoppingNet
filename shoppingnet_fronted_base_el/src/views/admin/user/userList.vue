@@ -61,7 +61,7 @@
               <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeUserById(scope.row.id)"></el-button>
               <!-- 分配角色按钮 -->
               <el-tooltip effect="dark" content="分配角色" placement="top" :enterable="false">
-                <el-button type="warning" icon="el-icon-setting" size="mini"></el-button>
+                <el-button type="warning" icon="el-icon-setting" size="mini" @click="openRoleDialog(scope.row.id)"></el-button>
               </el-tooltip>
             </template>
           </el-table-column>
@@ -126,6 +126,24 @@
           <el-button type="primary" @click="submitEdit">确 定</el-button>
         </div>
       </el-dialog>
+      <!-- 分配权限的对话框 -->
+      <el-dialog title="分配权限" :visible.sync="dialogFormAuthVisible">
+        <el-form :model="userFormAuth" :rules="rules" ref="userFormAuth" label-width="80px">
+          <el-form-item label="用户名" prop="username">
+            <el-input v-model="userFormAuth.username" :disabled="true"></el-input>
+          </el-form-item>
+          <el-form-item label="角色" prop="roleId">
+            <el-radio-group v-model="userFormAuth.userType">
+              <!-- 遍历roleList -->
+              <el-radio v-for="item in roleList" :aria-selected="item.roleId === userFormAuth.userType" :key="item.roleName" :label="item.roleId">{{item.roleName}}</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogFormAuthVisible = false">取 消</el-button>
+          <el-button type="primary" @click="submitAuth">确 定</el-button>
+        </div>
+      </el-dialog>
     </div>
 </template>
 <script>
@@ -147,13 +165,22 @@ export default {
       pageSize: 4,
       dialogFormVisible: false,
       dialogFormEditVisible: false,
+      dialogFormAuthVisible: false,
       userForm: {
+        id: '',
         username: '',
         password: '',
         email: '',
         userType: '',
       },
       userFormEdit: {
+        id: '',
+        username: '',
+        password: '',
+        email: '',
+        userType: '',
+      },
+      userFormAuth: {
         id: '',
         username: '',
         password: '',
@@ -290,6 +317,31 @@ export default {
         }
       })
       return roleName
+    },
+    /**
+     * 添加用户角色
+     * @param userId
+     * @returns {Promise<ElMessageComponent>}
+     */
+    async openRoleDialog(userId){
+      this.dialogFormAuthVisible = true;
+      //获取用户信息
+      const {data:res} = await this.$http.get("/admin/user/users/"+userId);
+      if(res.meta.status !== "OK") return this.$message.error(res.meta.msg)
+      this.userFormAuth = res.data.user;
+    },
+    /**
+     * 提交添加用户角色
+     */
+    submitAuth(){
+      this.$refs.userFormAuth.validate(async valid => {
+        if (!valid) return;
+        const {data:res} = await this.$http.put("/admin/user/update",this.userFormAuth);
+        if(res.meta.status !== "OK") return this.$message.error(res.meta.msg)
+        this.$message.success("修改成功");
+        this.dialogFormAuthVisible = false;
+        await this.getUserList();
+      });
     }
   },
   computed: {
