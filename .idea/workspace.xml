@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef75369e-ec49-4f73-a5a4-45a6f2e20e06" name="Changes" comment="添加登录导航守卫 保存token信息">
-      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Params.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Cate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Cate.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/login.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +103,7 @@
       <workItem from="1650525505064" duration="8610000" />
       <workItem from="1650551998684" duration="1335000" />
       <workItem from="1650553450033" duration="2079000" />
-      <workItem from="1650588305297" duration="13422000" />
+      <workItem from="1650588305297" duration="14515000" />
     </task>
     <task id="LOCAL-00001" summary="add new files">
       <created>1649235387077</created>
