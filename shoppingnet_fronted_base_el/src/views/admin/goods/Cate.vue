@@ -61,8 +61,8 @@
                      clearable placeholder="请选择父级分类"
                      :props="cascaderProps"
                      @change="parentMenuChange"
-                     :disabled="!isAdding"
-        ></el-cascader>
+                     :disabled="!isAdding">
+        </el-cascader>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">

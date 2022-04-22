@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef75369e-ec49-4f73-a5a4-45a6f2e20e06" name="Changes" comment="添加登录导航守卫 保存token信息">
-      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Cate.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Params.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Cate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Cate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/login.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,8 +102,12 @@
       <workItem from="1650175427900" duration="1872000" />
       <workItem from="1650274084684" duration="4279000" />
       <workItem from="1650328795517" duration="1686000" />
-      <workItem from="1650331631988" duration="8829000" />
-      <workItem from="1650418473112" duration="15092000" />
+      <workItem from="1650331631988" duration="2315000" />
+      <workItem from="1650519301745" duration="1688000" />
+      <workItem from="1650525505064" duration="8610000" />
+      <workItem from="1650551998684" duration="1335000" />
+      <workItem from="1650553450033" duration="2079000" />
+      <workItem from="1650588305297" duration="13422000" />
     </task>
     <task id="LOCAL-00001" summary="add new files">
       <created>1649235387077</created>

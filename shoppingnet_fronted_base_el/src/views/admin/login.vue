@@ -7,20 +7,28 @@
       </div>
       <!-- 登录表单区域 -->
       <el-form ref="LoginFormRef" :model="LoginForm" :rules="LoginFormRules" label-width="0px" class="login_form">
-		  <!-- 用户名 -->
-		  <el-form-item prop="username">
-			<el-input prefix-icon="el-icon-user-solid" v-model="LoginForm.username"></el-input>
-		  </el-form-item>
-		  <!-- 密码 -->
-		  <el-form-item prop="password">
-			<el-input prefix-icon="el-icon-lock" v-model="LoginForm.password" type="password"></el-input>
-		  </el-form-item>
-		  <!-- 按钮区域 -->
-		  <el-form-item class="btns">
-			<el-button type="primary" @click="login">登录</el-button>
-			<el-button type="info" @click="resetLoginForm">重置</el-button>
-		  </el-form-item>
-	  </el-form>
+        <!-- 用户名 -->
+        <el-form-item prop="username">
+        <el-input prefix-icon="el-icon-user-solid" v-model="LoginForm.username"
+                  @keyup.enter.native="login"
+                  ref="username"
+                  @keyup.down.native="passwordFocus">
+        </el-input>
+        </el-form-item>
+        <!-- 密码 -->
+        <el-form-item prop="password">
+          <el-input prefix-icon="el-icon-lock" v-model="LoginForm.password" type="password"
+                    @keyup.enter.native="login"
+                    ref="password"
+                    @keyup.up.native="usernameFocus">
+          </el-input>
+        </el-form-item>
+        <!-- 按钮区域 -->
+        <el-form-item class="btns">
+          <el-button type="primary" @click="login">登录</el-button>
+          <el-button type="info" @click="resetLoginForm">重置</el-button>
+        </el-form-item>
+	    </el-form>
     </div>
   </div>
 </template>
@@ -80,6 +88,17 @@
           // }
           // console.log("登录成功");
         });
+      },
+      // 用户名获取焦点
+      usernameFocus(){
+        this.$refs.LoginFormRef.validateField('password');
+        this.$refs.username.focus();
+
+      },
+      // 密码获取焦点
+      passwordFocus(){
+        this.$refs.LoginFormRef.validateField('username');
+        this.$refs.password.focus();
       }
     }
 
