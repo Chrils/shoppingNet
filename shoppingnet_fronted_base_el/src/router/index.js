@@ -17,6 +17,8 @@ const routes = [
           {path: '/roles/list',component:()=>import('../views/admin/power/roles.vue')},
           {path: '/goods/categories',component:()=>import('../views/admin/goods/Cate.vue')},
           {path: '/goods/params',component:()=>import('../views/admin/goods/Params')},
+          {path: '/goods/list',component:()=>import('../views/admin/goods/Goods.vue')},
+          {path: '/goods/add',component:()=>import('../views/admin/goods/Add.vue')},
       ]},
 ]
 
