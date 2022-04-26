@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef75369e-ec49-4f73-a5a4-45a6f2e20e06" name="Changes" comment="添加登录导航守卫 保存token信息">
-      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Edit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Goods.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Goods.vue" afterDir="false" />
-    </list>
+    <list default="true" id="ef75369e-ec49-4f73-a5a4-45a6f2e20e06" name="Changes" comment="添加登录导航守卫 保存token信息" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,12 +101,7 @@
       <workItem from="1650525505064" duration="8610000" />
       <workItem from="1650551998684" duration="1335000" />
       <workItem from="1650553450033" duration="2079000" />
-      <workItem from="1650588305297" duration="34115000" />
-      <workItem from="1650675557642" duration="28000" />
-      <workItem from="1650675599175" duration="23603000" />
-      <workItem from="1650731095132" duration="59000" />
-      <workItem from="1650846079381" duration="20170000" />
-      <workItem from="1650944300359" duration="12082000" />
+      <workItem from="1650588305297" duration="14515000" />
     </task>
     <task id="LOCAL-00001" summary="add new files">
       <created>1649235387077</created>
