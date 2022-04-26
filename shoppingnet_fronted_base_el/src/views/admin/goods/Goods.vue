@@ -112,62 +112,62 @@
         :total="total">
       </el-pagination>
     </el-card>
-    <!-- 添加商品的对话框 -->
-    <el-dialog
-      title="添加商品"
-      :visible.sync="dialogFormVisible"
-      width="60%" @close="dialogClosed">
-      <el-form :model="form" :rules="rules" ref="form" label-width="80px">
-        <el-form-item label="商品名称" prop="goodsName">
-          <el-input v-model="form.goodsName" placeholder="请输入商品名称" clearable @clear="handleInputClear"></el-input>
-        </el-form-item>
-        <el-form-item label="商品分类" prop="goodsCate">
-          <el-cascader
-              v-model="form.goodsCate"
-              :options="cateList"
-              :props="cascaderProps"
-              placeholder="请选择分类">
-          </el-cascader>
-        </el-form-item>
-        <el-form-item label="商品价格" prop="goodsPrice">
-          <el-input-number v-model="form.goodsPrice" :min="0" :max="999999"></el-input-number>
-        </el-form-item>
-        <el-form-item label="商品库存" prop="goodsStock">
-          <el-input-number v-model="form.goodsStock" :min="0" :max="999999"></el-input-number>
-        </el-form-item>
-        <el-form-item label="商品描述" prop="goodsDesc">
-          <el-input type="textarea" v-model="form.goodsDesc" placeholder="请输入商品描述"></el-input>
-        </el-form-item>
-        <el-form-item label="商品图片" prop="goodsImgs">
-          <!-- 图片上传 -->
-          <el-upload
-            class="upload-demo"
-            list-type="picture-card"
-            action=""
-            :headers="headers"
-            :on-preview="handlePreview"
-            :on-remove="handleRemove"
-            :before-upload="beforeUpload"
-            :on-success="handleSuccess"
-            :on-error="handleError"
-            :http-request="upload"
-            :file-list="fileList">
-            <i class="el-icon-plus"></i>
-          </el-upload>
-          <!-- 图片预览 -->
-          <el-dialog
-            title="预览" append-to-body
-            :visible.sync="dialogImageVisible" width="30%">
-            <img width="100%" :src="dialogImageUrl" alt=""
-                 crossOrigin="use-credentials">
-          </el-dialog>
-        </el-form-item>
-      </el-form>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="handleSubmit">确 定</el-button>
-      </span>
-    </el-dialog>
+    <!-- 添加商品的对话框(改用步骤条方式实现) -->
+<!--    <el-dialog-->
+<!--      title="添加商品"-->
+<!--      :visible.sync="dialogFormVisible"-->
+<!--      width="60%" @close="dialogClosed">-->
+<!--      <el-form :model="form" :rules="rules" ref="form" label-width="80px">-->
+<!--        <el-form-item label="商品名称" prop="goodsName">-->
+<!--          <el-input v-model="form.goodsName" placeholder="请输入商品名称" clearable @clear="handleInputClear"></el-input>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="商品分类" prop="goodsCate">-->
+<!--          <el-cascader-->
+<!--              v-model="form.goodsCate"-->
+<!--              :options="cateList"-->
+<!--              :props="cascaderProps"-->
+<!--              placeholder="请选择分类">-->
+<!--          </el-cascader>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="商品价格" prop="goodsPrice">-->
+<!--          <el-input-number v-model="form.goodsPrice" :min="0" :max="999999"></el-input-number>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="商品库存" prop="goodsStock">-->
+<!--          <el-input-number v-model="form.goodsStock" :min="0" :max="999999"></el-input-number>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="商品描述" prop="goodsDesc">-->
+<!--          <el-input type="textarea" v-model="form.goodsDesc" placeholder="请输入商品描述"></el-input>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="商品图片" prop="goodsImgs">-->
+<!--          &lt;!&ndash; 图片上传 &ndash;&gt;-->
+<!--          <el-upload-->
+<!--            class="upload-demo"-->
+<!--            list-type="picture-card"-->
+<!--            action=""-->
+<!--            :headers="headers"-->
+<!--            :on-preview="handlePreview"-->
+<!--            :on-remove="handleRemove"-->
+<!--            :before-upload="beforeUpload"-->
+<!--            :on-success="handleSuccess"-->
+<!--            :on-error="handleError"-->
+<!--            :http-request="upload"-->
+<!--            :file-list="fileList">-->
+<!--            <i class="el-icon-plus"></i>-->
+<!--          </el-upload>-->
+<!--          &lt;!&ndash; 图片预览 &ndash;&gt;-->
+<!--          <el-dialog-->
+<!--            title="预览" append-to-body-->
+<!--            :visible.sync="dialogImageVisible" width="30%">-->
+<!--            <img width="100%" :src="dialogImageUrl" alt=""-->
+<!--                 crossOrigin="use-credentials">-->
+<!--          </el-dialog>-->
+<!--        </el-form-item>-->
+<!--      </el-form>-->
+<!--      <span slot="footer" class="dialog-footer">-->
+<!--        <el-button @click="dialogFormVisible = false">取 消</el-button>-->
+<!--        <el-button type="primary" @click="handleSubmit">确 定</el-button>-->
+<!--      </span>-->
+<!--    </el-dialog>-->
   </div>
 </template>
 
@@ -328,8 +328,12 @@ export default {
       });
     },
     handleEdit(row){
-      this.dialogFormVisible = true;
-      this.form = row;
+      this.$router.push({
+        path: "/goods/edit",
+        query: {
+          goodsId: row.goodsId
+        }
+      });
     },
     dialogClosed(){
       this.dialogFormVisible = false;

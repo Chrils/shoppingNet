@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef75369e-ec49-4f73-a5a4-45a6f2e20e06" name="Changes" comment="添加登录导航守卫 保存token信息">
-      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Add.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Goods.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Edit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/assets/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Add.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Goods.vue" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingnet_fronted_base_el/src/views/admin/goods/Goods.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +111,8 @@
       <workItem from="1650675557642" duration="28000" />
       <workItem from="1650675599175" duration="23603000" />
       <workItem from="1650731095132" duration="59000" />
-      <workItem from="1650846079381" duration="16723000" />
+      <workItem from="1650846079381" duration="20170000" />
+      <workItem from="1650944300359" duration="11736000" />
     </task>
     <task id="LOCAL-00001" summary="add new files">
       <created>1649235387077</created>

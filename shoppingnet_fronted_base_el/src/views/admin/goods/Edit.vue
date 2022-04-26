@@ -7,14 +7,14 @@
           <router-link to="/welcome">首页</router-link>
         </el-breadcrumb-item>
         <el-breadcrumb-item>商品管理</el-breadcrumb-item>
-        <el-breadcrumb-item>添加商品</el-breadcrumb-item>
+        <el-breadcrumb-item>编辑商品</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <!-- 卡片视图区域 -->
     <el-card>
       <!-- 消息提示区域 -->
       <el-alert
-          title="添加商品信息"
+          title="编辑商品信息"
           type="info"
           center
           :closable="false"
@@ -27,7 +27,7 @@
         <el-step title="商品属性" description="填写商品属性"></el-step>
         <el-step title="商品图片" description="上传商品图片"></el-step>
         <el-step title="商品内容" description="填写商品内容"></el-step>
-        <el-step title="完成" description="已完成添加"></el-step>
+        <el-step title="完成" description="已完成编辑"></el-step>
       </el-steps>
 
       <!-- 左侧tab栏区域 -->
@@ -99,7 +99,7 @@
           </el-tab-pane>
           <el-tab-pane label="商品内容" name="4">
             <quill-editor ref="quillEditor" v-model="form.goodsDesc" :options="editorOption"></quill-editor>
-            <el-button type="primary" class="btnAdd" @click="handleSubmit">添加商品</el-button>
+            <el-button type="primary" class="btnAdd" @click="handleSubmit">提交编辑</el-button>
           </el-tab-pane>
         </el-tabs>
       </el-form>
@@ -111,7 +111,7 @@
 <script>
 import _ from 'lodash';
 export default {
-  name: "Add",
+  name: "Edit",
   data() {
     return {
       active: '0',
@@ -132,7 +132,8 @@ export default {
           { type: "number", message: "请输入数字", trigger: "blur" }
         ],
         goodsWeight: [
-          { required: true, message: "请输入商品重量", trigger: "blur" }
+          { required: true, message: "请输入商品重量", trigger: "blur" },
+          { type: "number", message: "请输入数字", trigger: "blur" }
         ]
       },
       form: {
@@ -146,6 +147,7 @@ export default {
         goodsImgs: [], // 商品图片
         goodsCreate: "", // 商品创建时间
         attrs: [], // 商品属性
+        rawImg: [], // 商品原始图片
       },
       dialogImageUrl: "", // 图片预览url
       dialogImageVisible: false, // 图片预览对话框是否显示
@@ -169,7 +171,7 @@ export default {
       // 富文本编辑器配置
       editorOption: {
         theme: 'snow'
-      }
+      },
 
     }
   },
@@ -182,6 +184,7 @@ export default {
       const {data:res} = await this.$http.get("/admin/goods/cate",{ params: {maxLevel: 1}})
       if(res.meta.status!=="OK") return this.$message.error(res.meta.msg);
       this.cateList = res.data.list;
+      console.log("获取商品分类列表",this.cateList);
     },
     beforeLeaveTab(to, from) {
       if (this.form.goodsCate.length !== 3) {
@@ -201,7 +204,10 @@ export default {
       }
     },
     //获取参数列表
-    async getParamsList() {
+    async getParamsList(special) {
+      if (special) {
+        this.activeName = special
+      }
       const {data: res} = await this.$http.get(`/admin/goods/cate/${this.selectedId}/params/${this.activeName}`)
       if (res.meta.status !== "OK") return this.$message.error(res.meta.msg);
       if (this.activeName === "dynamic") {
@@ -209,15 +215,11 @@ export default {
         this.dynamicParamsList.forEach(item => {
           item.attrVals = item.attrVals ? item.attrVals.split(' ') : [];
         })
-        //将动态参数列表深拷贝至临时动态参数列表
-        this.tempDynamicParamsList = JSON.parse(JSON.stringify(this.dynamicParamsList));
       } else if (this.activeName === "static") {
         this.staticParamsList = res.data.list;
         this.staticParamsList.forEach(item => {
           item.attrVals = item.attrVals ? item.attrVals.split(' ') : [];
         })
-        //将静态参数列表深拷贝至临时静态参数列表
-        this.tempStaticParamsList = JSON.parse(JSON.stringify(this.staticParamsList));
       }
     },
     handlePreview(file){
@@ -288,6 +290,7 @@ export default {
       const copyFrom = _.cloneDeep(this.form)
       copyFrom.goodsImgs = this.form.goodsImgs.join(' ');
       copyFrom.goodsCate = this.form.goodsCate[this.form.goodsCate.length-1];
+      this.form.attrs = []
       //将动态参数列表转换为字符串
       this.tempDynamicParamsList.forEach(item => {
         const newInfo = {
@@ -307,18 +310,81 @@ export default {
       copyFrom.attrs = this.form.attrs
       //使用moment格式化日期
       copyFrom.goodsCreate = this.$moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
-      const {data:res} = await this.$http.post("/admin/goods/goods",copyFrom);
+      const {data:res} = await this.$http.put("/admin/goods/goods",copyFrom);
       if(res.meta.status!=="OK") return this.$message.error(res.meta.msg);
-      this.$message.success("添加成功");
+      this.$message.success("修改成功");
       await this.$router.push("/goods/list");
     },
+    //页面初始化加载数据
+    async init(){
+      // 获取当前正在编辑的商品信息
+      const {data:res} = await this.$http.get(`/client/goods/detail/${this.$route.query.goodsId}`);
+      if (res.meta.status !== "OK") return this.$message.error(res.meta.msg);
+      //将商品信息赋值给form
+      this.form = res.data.item;
+      // 保存商品的原始图片
+      this.form.rawImg = this.form.goodsImgs;
+      //将商品图片转换为数组
+      this.form.goodsImgs = this.form.goodsImgs.split(' ');
+      this.form.goodsImgs.forEach(item => {
+        this.fileList.push({
+          url: res.data.urlPrefix+item,
+          uid: res.data.urlPrefix+item
+        })
+      })
+      console.log("====2==",this.cateList);
+      this.cateList.forEach(item => {
+        item.children.forEach(cate => {
+          cate.children.forEach(cateItem => {
+            if (cateItem.cateId === this.form.goodsCate) {
+              this.form.goodsCate = [item.cateId, cate.cateId, cateItem.cateId];
+              console.log("====3==",this.form.goodsCate);
+            }
+          })
+        })
+      })
+      await this.getParamsList('dynamic');
+      await this.getParamsList('static');
+      this.form.attrs=res.data.params;
+      this.dynamicParamsList.forEach(item => {
+        this.form.attrs.forEach(attr => {
+          if (item.attrId === attr.attrId) {
+            this.tempDynamicParamsList.push({
+              attrId: attr.attrId,
+              attrVals: attr.attrVals.split(' ')
+            });
+          }
+        })
+      })
+      console.log("====4==",this.staticParamsList);
+      console.log("====5==",this.tempStaticParamsList);
+      this.staticParamsList.forEach(item => {
+        this.form.attrs.forEach(attr => {
+          console.log("====4==",item.attrId,attr.attrId);
+          if (item.attrId === attr.attrId) {
+            this.tempStaticParamsList.push({
+              attrId: attr.attrId,
+              attrVals: attr.attrVals.split(' ')
+            });
+          }
+        })
+      })
+    }
   },
   created() {
-    this.getCateList();
+    new Promise(async resolve => {
+      await this.getCateList()
+      resolve()
+    }).then(() => {
+      this.init()
+    })
   },
   computed: {
     selectedId() {
-      if (this.form.goodsCate.length !== 3) return null;
+      if (this.form.goodsCate.length !== 3){
+        console.log("length",this.form.goodsCate.length);
+        return null;
+      }
       return this.form.goodsCate[this.form.goodsCate.length - 1];
     }
   },
