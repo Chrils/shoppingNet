@@ -22,7 +22,7 @@
                 show-index index-text="#" border class="tree-table">
       <!-- 是否有效 -->
       <template slot="isValid" slot-scope="scope">
-        <i class="el-icon-success" style="color: lightgreen;" v-if="scope.row.cateDeleted===0"></i>
+        <i class="el-icon-success" style="color: lightgreen;" v-if="scope.row.cateDeleted===false"></i>
         <i class="el-icon-error" style="color: red;" v-else></i>
       </template>
       <!-- 排序 -->

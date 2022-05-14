@@ -19,6 +19,7 @@
               v-model="selectedKeys"
               :options="cateList"
               :props="cascaderProps"
+              @change="handleCascaderChange"
               placeholder="请选择分类">
           </el-cascader>
         </el-col>
@@ -86,6 +87,10 @@
         <el-table-column
           prop="goodsStock"
           label="商品库存">
+        </el-table-column>
+        <el-table-column
+          prop="goodsSell"
+          label="商品销量">
         </el-table-column>
         <el-table-column
           prop="goodsCreate"
@@ -194,6 +199,7 @@ export default {
         label: "cateName", //当前节点显示的文本
         children: "children", //父子节点之间的关系
         expandTrigger: "hover",  // 何时触发展开
+        checkStrictly: true // 是否严格检查父子节点之间的关系
       },
       selectedKeys: [], // 级联选择框选中的值
       dialogSelectedKeys: [], // 对话框选中的值
@@ -290,6 +296,9 @@ export default {
       this.queryInfo.page = val;
       this.getGoodsList();
     },
+    handleCascaderChange(){
+      this.getGoodsList()
+    },
     handleAdd(){
 
       //this.dialogFormVisible = true;
@@ -310,6 +319,11 @@ export default {
       });
     },
     handleMultiDelete(){
+      if (this.$refs.multipleTable.selection.length===0) {
+        return this.$notify({
+        type: 'warning',
+        message: '请先选择商品'
+      })}
       this.$confirm("确定删除选中的商品吗？", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",

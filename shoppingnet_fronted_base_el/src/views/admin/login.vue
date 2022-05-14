@@ -34,6 +34,7 @@
 </template>
 
 <script>
+
   export default{
 	  data(){
 		  return {
@@ -78,11 +79,19 @@
             //保存token到sessionStorage
             sessionStorage.setItem('token',res.data.token);
             this.$message.success(res.meta.msg);
-            await this.$router.push('/home');
+            this.$store.commit('setUserType',res.data.role);
+            this.$store.commit('setCartInfo',res.data.cart);
+            this.$store.commit('setUserInfo',res.data.user);
+            if (res.data.role === 0 || res.data.role === 1){
+              //超级管理员或者管理员
+              await this.$router.push('/home');
+            }else{
+              //普通用户
+              await this.$router.push('/mall');
+            }
           }else{
             this.$message.error(res.meta.msg);
           }
-
           // if (res.meta.status !== 200) {
           //   return console.log("登录失败");
           // }

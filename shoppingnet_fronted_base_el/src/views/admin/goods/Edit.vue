@@ -332,7 +332,6 @@ export default {
           uid: res.data.urlPrefix+item
         })
       })
-      console.log("====2==",this.cateList);
       this.cateList.forEach(item => {
         item.children.forEach(cate => {
           cate.children.forEach(cateItem => {
@@ -372,10 +371,13 @@ export default {
     }
   },
   created() {
+    console.log("start created ...")
     new Promise(async resolve => {
+      console.log("start created ...")
       await this.getCateList()
       resolve()
     }).then(() => {
+      console.log("init ...")
       this.init()
     })
   },

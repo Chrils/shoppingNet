@@ -54,7 +54,10 @@ export default {
     // 用户注销
     logout(){
       window.sessionStorage.removeItem('token');
-      this.$router.push('/login');
+      this.$store.commit('setUserType', null);
+      this.$store.commit('setCartInfo',null);
+      this.$store.commit('setUserInfo',null);
+      this.$router.push('/mall/index');
     },
     // 获取菜单列表
     async getMenuList(){
